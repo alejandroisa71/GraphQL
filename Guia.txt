@@ -10,7 +10,16 @@ npm i mongoose dotenv
 
 ----------------------GIT---------------------------
 git init (esto se hace una sola vez)
-git status 
+en gitignore se ponen los archivos que se van a ignorar(por ejemplo los .env y los node_modules)
+git status o git status -s
+git add.
+git commit -m "primer commit"
+git remote add origin https://github.com/alejandroisa71/GraphQL.git
+git push -u origin master manda losa cambios a repositorio remoto
+git pull me trae los cambios del repositorio remoto
+git log --oneline me muestra todos los commits
+git reset --hard head 7044610 me regresa al commit indicado (ojo con esto)
+
 
 
 video 4.2 4:05
