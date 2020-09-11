@@ -10,7 +10,7 @@ npm i mongoose dotenv
 
 ----------------------GIT---------------------------
 git init (esto se hace una sola vez)
-git status
+git status 
 
 
 video 4.2 4:05

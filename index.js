@@ -3,7 +3,7 @@ const typeDefs = require("./db/schema");
 const resolvers = require("./db/resolvers");
 const conectarDB = require("./config/db");
 
-//Conectar a labase de datos
+//Conectar a labase de datos.
 
 conectarDB();
 

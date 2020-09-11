@@ -1,4 +1,4 @@
-//Resolvers
+//Resolvers.
 
 const resolvers = {
   Query: {

@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server");
 
-//Schema
+//Schema.
 const typeDefs = gql`
   type Query {
     obtenerCurso: String

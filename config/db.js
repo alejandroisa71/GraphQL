@@ -8,7 +8,7 @@ const conectarDB = async () => {
   } catch (error) {
     console.log("Hubo un error");
     console.log(error);
-    process.exit(1); //detener la aplicacion
+    process.exit(1); //detener la aplicacion.
   }
 };
 
