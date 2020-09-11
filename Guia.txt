@@ -1,0 +1,16 @@
+npm init
+npm i apollo-server
+npm i -D nodemon (reinicia el servidor con los cambios)
+en el package.json cambio los scripts
+     "start": "node ." (significa que el index de entrada es el el archivo index)
+     "dev":"nodemon ." 
+http://localhost:4000/graphql para usar playground
+se crea cluster en mongodb atlas
+npm i mongoose dotenv
+
+----------------------GIT---------------------------
+git init (esto se hace una sola vez)
+git status
+
+
+video 4.2 4:05
