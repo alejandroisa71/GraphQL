@@ -7,6 +7,7 @@ en el package.json cambio los scripts
 http://localhost:4000/graphql para usar playground
 se crea cluster en mongodb atlas
 npm i mongoose dotenv
+npi i bcryptjs(para hassear password)
 
 ----------------------GIT---------------------------
 git init (esto se hace una sola vez)
