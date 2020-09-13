@@ -20,6 +20,9 @@ git pull me trae los cambios del repositorio remoto
 git log --oneline me muestra todos los commits
 git reset --hard head 7044610 me regresa al commit indicado (ojo con esto)
 
+-------------------GraphQL------------
+Mutation sirve para crear nuevos registros, modificarlos o borrarlos (requieren que se les pase informacion)
+el signo de exclamacion '!' hace obligatorio a un campo
 
 
 video 5.1 Creacion de Usuarios

@@ -9,11 +9,18 @@ const typeDefs = gql`
     email: String
     creado: String
   }
+  input usuarioInput {
+    nombre: String!
+    apellido: String!
+    email: String!
+    password: String!
+  }
+
   type Query {
     obtenerCurso: String
   }
   type Mutation {
-    nuevoUsuario: String
+    nuevoUsuario(input: usuarioInput): Usuario
   }
 `;
 module.exports = typeDefs;
