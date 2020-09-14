@@ -7,7 +7,8 @@ en el package.json cambio los scripts
 http://localhost:4000/graphql para usar playground
 se crea cluster en mongodb atlas
 npm i mongoose dotenv
-npi i bcryptjs(para hassear password)
+npm i bcryptjs(para hassear password)
+npm i jsonwebtoken
 
 ----------------------GIT---------------------------
 git init (esto se hace una sola vez)
@@ -24,6 +25,8 @@ git reset --hard head 7044610 me regresa al commit indicado (ojo con esto)
 -------------------GraphQL------------
 Mutation sirve para crear nuevos registros, modificarlos o borrarlos (requieren que se les pase informacion)
 el signo de exclamacion '!' hace obligatorio a un campo
-
+Se pueden definir tipos de datos personalizados (por ejemplo Token)
+Siempre que hay un Mutation nuevo hay que ir al resolver
+acceder a https://jwt.io para ver los payload
 
 video 5.1 Creacion de Usuarios
