@@ -111,6 +111,17 @@ const resolvers = {
       });
       return producto;
     },
+    eliminarProducto: async (_, { id }) => {
+      // revisar si el producto existe
+      let producto = await Producto.findById(id);
+
+      if (!producto) {
+        throw new Error("Producto no encontrado");
+      }
+      //Eliminar
+      await Producto.findOneAndDelete({ _id: id });
+      return "Producto Eliminado";
+    },
   },
 };
 
