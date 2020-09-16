@@ -65,6 +65,11 @@ const typeDefs = gql`
     #Productos
     obtenerProductos: [Producto] # retorna un arreglo de productos
     obtenerProducto(id: ID!): Producto
+
+    #Clientes
+    obtenerClientes: [Cliente]
+    obtenerClientesVendedor: [Cliente]
+    obtenerCliente(id: ID!): Cliente
   }
 
   type Mutation {
