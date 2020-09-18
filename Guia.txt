@@ -29,4 +29,4 @@ Se pueden definir tipos de datos personalizados (por ejemplo Token)
 Siempre que hay un Mutation nuevo hay que ir al resolver
 acceder a https://jwt.io para ver los payload
 
-video 9.8 actualizar un cliente
+video 9.9 actualizar un cliente
