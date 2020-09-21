@@ -5,6 +5,7 @@ const Pedido = require("../models/Pedido");
 
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { findByIdAndUpdate } = require("../models/Usuario");
 require("dotenv").config({ path: "variables.env" });
 
 const crearToken = (usuario, secreta, expiresIn) => {
@@ -289,6 +290,66 @@ const resolvers = {
       //Guardar en la base de datos
       const resultado = await nuevoPedido.save();
       return resultado;
+    },
+    actualizarPedido: async (_, { id, input }, ctx) => {
+      const { cliente } = input;
+
+      //Si el pedido existe
+      const existePedido = await Pedido.findById(id);
+      if (!existePedido) {
+        throw new Error("El pedido no existe");
+      }
+
+      // si el cliente existe
+      const existeCliente = await Cliente.findById(cliente);
+      if (!existeCliente) {
+        throw new Error("El Cliente no existe");
+      }
+
+      // si el cliente y el pedido pertenecen al vendedor
+      if (existeCliente.vendedor.toString() !== ctx.usuario.id) {
+        throw new Error("No tienes las credenciales");
+      }
+
+      //Revisrar el stock
+      if (input.pedido) {
+        for await (const articulo of input.pedido) {
+          const { id } = articulo;
+
+          const producto = await Producto.findById(id);
+
+          if (articulo.cantidad > producto.existencia) {
+            throw new Error(
+              `El articulo: ${producto.nombre} excede la cantidad disponible`
+            );
+          } else {
+            // Restar a la cantidad disponible
+            producto.existencia = producto.existencia - articulo.cantidad;
+            await producto.save();
+          }
+        }
+      }
+      // Guardar el pedido
+      const resultado = await Pedido.findOneAndUpdate({ _id: id }, input, {
+        new: true,
+      });
+      return resultado;
+    },
+    eliminarPedido: async (_, { id }, ctx) => {
+      //Si el pedido existe
+      const pedido = await Pedido.findById(id);
+      if (!pedido) {
+        throw new Error("El pedido no existe");
+      }
+
+      // Verificar si el vendedor que lo creo es euin lo borra
+      if (pedido.vendedor.toString() !== ctx.usuario.id) {
+        throw new Error("No tienes las credenciales");
+      }
+
+      //Eliminar pedido
+      await Pedido.findOneAndDelete({ _id: id });
+      return "Pedido eliminado";
     },
   },
 };
