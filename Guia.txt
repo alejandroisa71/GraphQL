@@ -28,5 +28,5 @@ el signo de exclamacion '!' hace obligatorio a un campo
 Se pueden definir tipos de datos personalizados (por ejemplo Token)
 Siempre que hay un Mutation nuevo hay que ir al resolver
 acceder a https://jwt.io para ver los payload
-
-video 12.1 actualizar un cliente
+-----------------------------------------
+npm i apollo-link-context => para que pueda pasar el token(los headersque antes le pasabamos por medio de playground) via React para saber quien esta autenticado
