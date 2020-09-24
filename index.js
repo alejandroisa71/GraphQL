@@ -23,7 +23,7 @@ const server = new ApolloServer({
           token.replace("Bearer ", ""),
           process.env.SECRETA
         );
-        console.log(usuario);
+        // console.log(usuario);
         return {
           usuario,
         };
