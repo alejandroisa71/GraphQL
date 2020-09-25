@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server");
 
-//Schema.
+// Schema
 const typeDefs = gql`
   type Usuario {
     id: ID
@@ -35,8 +35,8 @@ const typeDefs = gql`
   type Pedido {
     id: ID
     pedido: [PedidoGrupo]
-    total: Int
-    cliente: ID
+    total: Float
+    cliente: Cliente
     vendedor: ID
     fecha: String
     estado: EstadoPedido
@@ -45,6 +45,8 @@ const typeDefs = gql`
   type PedidoGrupo {
     id: ID
     cantidad: Int
+    nombre: String
+    precio: Float
   }
 
   type TopCliente {
@@ -71,8 +73,8 @@ const typeDefs = gql`
 
   input ProductoInput {
     nombre: String!
-    existencia: Int! # esto es para los numeros enteros
-    precio: Float! # esto es para los numeros con decimales
+    existencia: Int!
+    precio: Float!
   }
 
   input ClienteInput {
@@ -86,6 +88,8 @@ const typeDefs = gql`
   input PedidoProductoInput {
     id: ID
     cantidad: Int
+    nombre: String
+    precio: Float
   }
 
   input PedidoInput {
@@ -105,8 +109,8 @@ const typeDefs = gql`
     #Usuarios
     obtenerUsuario: Usuario
 
-    #Productos
-    obtenerProductos: [Producto] # retorna un arreglo de productos
+    # Productos
+    obtenerProductos: [Producto]
     obtenerProducto(id: ID!): Producto
 
     #Clientes
@@ -114,37 +118,38 @@ const typeDefs = gql`
     obtenerClientesVendedor: [Cliente]
     obtenerCliente(id: ID!): Cliente
 
-    #Pedidos
+    # Pedidos
     obtenerPedidos: [Pedido]
     obtenerPedidosVendedor: [Pedido]
     obtenerPedido(id: ID!): Pedido
     obtenerPedidosEstado(estado: String!): [Pedido]
 
-    #Busquedas Avanzadas
+    # Busquedas Avanzadas
     mejoresClientes: [TopCliente]
     mejoresVendedores: [TopVendedor]
     buscarProducto(texto: String!): [Producto]
   }
 
   type Mutation {
-    #Usuarios
+    # Usuarios
     nuevoUsuario(input: UsuarioInput): Usuario
     autenticarUsuario(input: AutenticarInput): Token
 
-    #Productos
+    # Productos
     nuevoProducto(input: ProductoInput): Producto
-    actualizarProducto(id: ID, input: ProductoInput): Producto
-    eliminarProducto(id: ID): String
+    actualizarProducto(id: ID!, input: ProductoInput): Producto
+    eliminarProducto(id: ID!): String
 
-    #Clientes
+    # Clientes
     nuevoCliente(input: ClienteInput): Cliente
     actualizarCliente(id: ID!, input: ClienteInput): Cliente
     eliminarCliente(id: ID!): String
 
-    #Pedidos
+    # Pedidos
     nuevoPedido(input: PedidoInput): Pedido
     actualizarPedido(id: ID!, input: PedidoInput): Pedido
     eliminarPedido(id: ID!): String
   }
 `;
+
 module.exports = typeDefs;
